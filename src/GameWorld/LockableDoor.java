@@ -1,5 +1,5 @@
 package GameWorld;
 
-public class LockableDoor {
+public class LockableDoor extends Door {
 
 }
