@@ -1,5 +1,7 @@
 package GameWorld.objects;
 
-public interface Item {
+import GameWorld.Room;
+
+public class Item {
 	
 }

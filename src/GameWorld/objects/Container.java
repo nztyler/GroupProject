@@ -1,6 +1,6 @@
 package GameWorld.objects;
 
-public class Container implements Item{
+public class Container extends MovableItem{
 
 	/**
 	 * This class will be used to hold multiple items less space is used in the

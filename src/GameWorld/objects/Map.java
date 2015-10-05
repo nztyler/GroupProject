@@ -1,5 +1,5 @@
 package GameWorld.objects;
 
-public class Map implements Item{
+public class Map extends MovableItem{
 
 }

@@ -1,5 +1,5 @@
 package GameWorld.objects;
 
-public class Key implements Item{
+public class Key extends MovableItem{
 
 }

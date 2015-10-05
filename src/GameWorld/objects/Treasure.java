@@ -1,6 +1,6 @@
 package GameWorld.objects;
 
-public class Treasure implements Item{
+public class Treasure extends UnmovableItem{
 
 	public Treasure(){
 		

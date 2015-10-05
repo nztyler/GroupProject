@@ -1,6 +1,6 @@
 package GameWorld.objects;
 
-public class Light implements Item{
+public class Light extends MovableItem{
 
 	/**
 	 * This object will be used to turn on a torch for the rooms that are too dark to 
