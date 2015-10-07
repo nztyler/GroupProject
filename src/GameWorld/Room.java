@@ -1,34 +1,27 @@
 package GameWorld;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import GameWorld.objects.Item;
 
 public class Room {
 
 	private String name;	//The name of the room
-	private ArrayList<Item> items;	//These are the items contained in the room
-	private ArrayList<Room> connectedRooms;	//These are the rooms that are connected to this
-	private HashMap<Room, Direction> roomsWithDirection;	//Rooms including the direction to which the rooms are facing
+	private List<Item> items;	//These are the items contained in the room
+	private Map<Direction, Door> doors; // Map of direction to door connected to this room
 	
-	public Room(String name){
+	public Room(String name, List<Item> items, Map<Direction, Door> doors){
 		this.name = name;
-		items = new ArrayList<Item>();
-		connectedRooms = new ArrayList<Room>();
-		roomsWithDirection = new HashMap<Room, Direction>();
-	}
-	
-	public void addConnectedRoom(Room room, Direction direction){
-		connectedRooms.add(room);
-		roomsWithDirection.put(room,  direction);
+		this.items = items;
+		this.doors = doors;
 	}
 	
 	public String getName(){
 		return name;
 	}
 	
-	public ArrayList<Item> getItems(){
+	public List<Item> getItems(){
 		return items;
 	}
 }
