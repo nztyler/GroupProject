@@ -17,6 +17,11 @@ public class Room {
 		this.doors = doors;
 	}
 	
+	public Map<Direction, Door> getDoors()
+	{
+		return doors;
+	}
+	
 	public String getName(){
 		return name;
 	}
