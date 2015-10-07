@@ -1,3 +1,3 @@
 package GameWorld;
 
-public enum Direction { NORTH, SOUTH, WEST, EAST }
+public enum Direction { NORTH, EAST, SOUTH, WEST}
