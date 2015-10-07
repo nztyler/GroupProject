@@ -29,4 +29,9 @@ public class Room {
 	public List<Item> getItems(){
 		return items;
 	}
+	
+	public void draw()
+	{
+		// draws the room and all items in the room
+	}
 }
