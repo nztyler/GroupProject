@@ -30,8 +30,9 @@ public class Room {
 		return items;
 	}
 	
-	public void draw()
+	public void draw(Direction directionFrom)
 	{
+		// uses directionFrom to draw the room from the view given by entering from that direction
 		// draws the room and all items in the room
 	}
 }
