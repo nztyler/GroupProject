@@ -1,5 +1,12 @@
 package GameWorld;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
+
 public class Character {
 
 	private final String name;
