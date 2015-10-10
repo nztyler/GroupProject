@@ -5,6 +5,12 @@ import java.util.Map;
 
 import GameWorld.objects.Item;
 
+/**
+ * 
+ * @author Tyler Campbell & Gareth Smith
+ * 
+ *
+ */
 public class Room {
 
 	private String name;	//The name of the room

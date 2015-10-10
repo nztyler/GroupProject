@@ -5,6 +5,12 @@ import java.util.ArrayList;
 
 import GameWorld.objects.MovableItem;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class Inventory {
 
 	/* Inventory is basically a container, so do I really need this class? */

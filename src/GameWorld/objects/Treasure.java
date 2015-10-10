@@ -1,5 +1,11 @@
 package GameWorld.objects;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class Treasure extends Item{
 
 	private static final String IMAGE = "";

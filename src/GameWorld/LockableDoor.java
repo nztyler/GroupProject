@@ -1,5 +1,11 @@
 package GameWorld;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class LockableDoor extends Door {
 
 	private boolean isLocked;

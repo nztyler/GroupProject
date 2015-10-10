@@ -10,6 +10,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * 
+ * @author Gareth Smith
+ * 
+ *
+ */
 public class ApplicationWindow {
 	private JFrame frame;
 	

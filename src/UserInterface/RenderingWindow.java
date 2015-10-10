@@ -5,6 +5,12 @@ import javax.swing.JPanel;
 import GameWorld.Direction;
 import GameWorld.Room;
 
+/**
+ * 
+ * @author Gareth Smith
+ * 
+ *
+ */
 public class RenderingWindow extends JPanel{
 	
 	private Room currentRoom;

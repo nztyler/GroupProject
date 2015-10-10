@@ -1,5 +1,11 @@
 package GameWorld.objects;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class Container extends MovableItem{
 
 	/**

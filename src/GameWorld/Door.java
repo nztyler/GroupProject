@@ -2,6 +2,12 @@ package GameWorld;
 
 import GameWorld.objects.Key;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class Door {
 
 	private Room room1;

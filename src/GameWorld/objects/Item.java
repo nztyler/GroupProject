@@ -2,6 +2,12 @@ package GameWorld.objects;
 
 import GameWorld.Room;
 
+/**
+ * 
+ * @author Tyler Campbell
+ * 
+ *
+ */
 public class Item {
 
 	//draw method
