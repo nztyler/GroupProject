@@ -7,6 +7,7 @@ import GameWorld.objects.Item;
 
 public class Room {
 
+	public final String IMAGE = "Images/Room_Basic.png";
 	private String name;	//The name of the room
 	private List<Item> items;	//These are the items contained in the room
 	private Map<Direction, Door> doors; // Map of direction to door connected to this room
