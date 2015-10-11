@@ -1,6 +1,7 @@
 package UserInterface;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,20 +10,21 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 public class ApplicationWindow {
 	private JFrame frame;
 	
-	public ApplicationWindow()
+	public ApplicationWindow(RenderingWindow window)
 	{
 		frame = new JFrame();
 		frame.setTitle("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new FlowLayout());
+		frame.setLayout(new GridBagLayout());
 		setMenu();
-		//frame.add(getRenderWindow());
+		frame.add(window);
 		setControlButtons();
-		frame.setSize(400,400);
+		frame.setSize(1000,1000);
 		frame.setVisible(true);
 		frame.pack();
 	}
@@ -45,6 +47,8 @@ public class ApplicationWindow {
 	
 	public void setControlButtons()
 	{
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout());
 		JButton button = new JButton("Left");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action)
@@ -52,7 +56,7 @@ public class ApplicationWindow {
 				//moveLeft();
 			}
 		});
-		frame.add(button);
+		buttonPanel.add(button);
 		button = new JButton("Up");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action)
@@ -60,7 +64,7 @@ public class ApplicationWindow {
 				//moveUp();
 			}
 		});
-		frame.add(button);
+		buttonPanel.add(button);
 		button = new JButton("Down");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action)
@@ -68,7 +72,7 @@ public class ApplicationWindow {
 				//moveDown();
 			}
 		});
-		frame.add(button);
+		buttonPanel.add(button);
 		button = new JButton("Right");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action)
@@ -76,7 +80,7 @@ public class ApplicationWindow {
 				//moveRight();
 			}
 		});
-		frame.add(button);
+		buttonPanel.add(button);
 		button = new JButton("Interact");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent action)
@@ -84,15 +88,12 @@ public class ApplicationWindow {
 				//interact();
 			}
 		});
-		frame.add(button);
+		buttonPanel.add(button);
+		frame.add(buttonPanel);
 	}
 	
 	public void joinGame()
 	{
 		//call join game method
-	}
-	
-	public static void main(String args[]) {
-		new ApplicationWindow();
 	}
 }
