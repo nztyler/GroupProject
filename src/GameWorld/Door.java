@@ -50,7 +50,12 @@ public class Door {
 		}
 	}
 
-	public void useKey(){
-		isLocked = !isLocked;
+	public void useKey(Key key){
+		if (this.key == key){
+			System.out.println("The door is now " + (isLocked ? "locked" : "unlocked"));
+			isLocked = !isLocked;
+		} else {
+			System.out.println("This is not the correct key");
+		}
 	}
 }

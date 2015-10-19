@@ -6,12 +6,17 @@ package GameWorld.objects;
  * 
  *
  */
-public class Map extends MovableItem{
+public class Map extends ActivatableItem{
 
 	private static final String IMAGE = "";
 
 	public Map(){
 		super(IMAGE);
+	}
+
+	@Override
+	public void activate(ActivatableItem item) {
+		//display the map on the screen
 	}
 
 }

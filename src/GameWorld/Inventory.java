@@ -24,6 +24,10 @@ public class Inventory {
 	public ArrayList<MovableItem> getItems(){
 		return items;
 	}
+	
+	public boolean contains(MovableItem item){
+		return items.contains(item);
+	}
 
 	public void put(MovableItem item){
 		items.add(item);

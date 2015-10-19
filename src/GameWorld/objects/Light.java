@@ -6,7 +6,7 @@ package GameWorld.objects;
  * 
  *
  */
-public class Light extends MovableItem{
+public class Light extends ActivatableItem{
 
 	/**
 	 * This object will be used to turn on a torch for the rooms that are too dark to
@@ -32,5 +32,10 @@ public class Light extends MovableItem{
 
 	public boolean isOn(){
 		return turnedOn;
+	}
+	@Override
+	public void activate(ActivatableItem item) {
+		pressSwitch();
+		System.out.println("The torch is now turned " + (isOn() ? "on" : "off"));
 	}
 }
