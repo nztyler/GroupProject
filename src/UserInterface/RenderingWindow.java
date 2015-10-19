@@ -1,9 +1,15 @@
 package UserInterface;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import GameWorld.Direction;
-import GameWorld.Room;
+import Main.GameState;
 
 /**
  * 
@@ -12,18 +18,27 @@ import GameWorld.Room;
  *
  */
 public class RenderingWindow extends JPanel{
+	@Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        try {
+			Image tempImage = ImageIO.read(new File(game.getCurrentRoom().IMAGE));
+			g.drawImage(tempImage, 0, 0, this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 	
-	private Room currentRoom;
-	private Direction directionFrom;
+	private GameState game;
 	
-	public RenderingWindow(Room startingRoom, Direction startingDirection)
+	public RenderingWindow(GameState game)
 	{
-		currentRoom = startingRoom;
-		directionFrom = startingDirection;
-	}
-	
-	public void draw()
-	{
-		currentRoom.draw(directionFrom);
+		Dimension size = new Dimension(1000, 600);
+	    setPreferredSize(size);
+	    setMinimumSize(size);
+	    setMaximumSize(size);
+	    setSize(size);
+		this.game = game;
 	}
 }
