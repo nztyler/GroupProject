@@ -22,20 +22,18 @@ public class Light extends ActivatableItem{
 		super(IMAGE);
 		this.turnedOn = false;
 	}
-	/**
-	 * Method call to either turn the torch on (if it is off) or turn the torch off (if
-	 * it is on)
-	 */
-	public void pressSwitch(){
-		turnedOn = !turnedOn;
-	}
 
 	public boolean isOn(){
 		return turnedOn;
 	}
+	
+	/**
+	 * Method call to either turn the torch on (if it is off) or turn the torch off (if
+	 * it is on)
+	 */
 	@Override
 	public void activate() {
-		pressSwitch();
+		turnedOn = !turnedOn;
 		System.out.println("The torch is now turned " + (isOn() ? "on" : "off"));
 	}
 }

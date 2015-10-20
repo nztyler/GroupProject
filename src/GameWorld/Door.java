@@ -50,12 +50,18 @@ public class Door {
 		}
 	}
 
+	/**
+	 * 
+	 * @param key is the key that is trying to be used to lock/unlock the door
+	 */
 	public void useKey(Key key){
 		if (this.key == key){
 			System.out.println("The door is now " + (isLocked ? "locked" : "unlocked"));
 			isLocked = !isLocked;
+		} else if  (this.key == null){
+			System.out.println("This door cannot be locked, and this key locks another door");
 		} else {
-			System.out.println("This is not the correct key");
+			System.out.println("This is not the correct key for this door");
 		}
 	}
 }
