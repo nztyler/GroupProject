@@ -12,7 +12,7 @@ public class Door {
 
 	private Room room1;
 	private Room room2;
-	private boolean isLocked;
+	protected boolean isLocked;
 	private Key key;
 
 	/**

@@ -24,10 +24,6 @@ public class GameState {
 		return new Room("Entrance", new ArrayList<Item>(), new HashMap<Direction, Door>());
 	}
 
-	public static void main(String args[]) {
-		new ApplicationWindow(new RenderingWindow(new GameState()));
-	}
-
 	public Room getCurrentRoom() {
 		return currentRoom;
 	}

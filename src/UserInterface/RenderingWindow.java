@@ -18,6 +18,18 @@ import Main.GameState;
  *
  */
 public class RenderingWindow extends JPanel{
+	
+	private GameState game;
+	
+	public RenderingWindow(GameState game){
+		Dimension size = new Dimension(1000, 600);
+	    setPreferredSize(size);
+	    setMinimumSize(size);
+	    setMaximumSize(size);
+	    setSize(size);
+		this.game = game;
+	}
+	
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -29,16 +41,4 @@ public class RenderingWindow extends JPanel{
 			e.printStackTrace();
 		}
     }
-	
-	private GameState game;
-	
-	public RenderingWindow(GameState game)
-	{
-		Dimension size = new Dimension(1000, 600);
-	    setPreferredSize(size);
-	    setMinimumSize(size);
-	    setMaximumSize(size);
-	    setSize(size);
-		this.game = game;
-	}
 }

@@ -15,5 +15,4 @@ public class UseItemEvent extends Event{
 		// TODO Auto-generated method stub
 		item.activate();
 	}
-
 }
