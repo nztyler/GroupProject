@@ -1,4 +1,4 @@
-package GameEvent;
+package GameWorld.gameevents;
 
 import GameWorld.objects.MovableItem;
 import GameWorld.Character;

@@ -6,6 +6,6 @@ public abstract class ActivatableItem extends MovableItem{
 		super(image);
 	}
 	
-	public abstract void activate(ActivatableItem item);
+	public abstract void activate();
 
 }

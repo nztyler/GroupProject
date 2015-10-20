@@ -15,7 +15,7 @@ public class Map extends ActivatableItem{
 	}
 
 	@Override
-	public void activate(ActivatableItem item) {
+	public void activate() {
 		//display the map on the screen
 	}
 

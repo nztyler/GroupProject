@@ -34,7 +34,7 @@ public class Light extends ActivatableItem{
 		return turnedOn;
 	}
 	@Override
-	public void activate(ActivatableItem item) {
+	public void activate() {
 		pressSwitch();
 		System.out.println("The torch is now turned " + (isOn() ? "on" : "off"));
 	}

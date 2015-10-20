@@ -20,12 +20,8 @@ public class Key extends ActivatableItem{
 	}
 
 	@Override
-	public void activate(ActivatableItem item) {
-		// TODO Auto-generated method stub
-		if (item instanceof Key){
-			//shall I have a cheacker here to check if the key is for this door?
-			door.useKey((Key) item);
-		}
+	public void activate() {
+			door.useKey(this);
 	}
 
 }

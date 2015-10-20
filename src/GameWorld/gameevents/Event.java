@@ -1,4 +1,4 @@
-package GameEvent;
+package GameWorld.gameevents;
 
 public abstract class Event {
 	
