@@ -2,6 +2,7 @@ package GameWorld.gameevents;
 
 import GameWorld.objects.MovableItem;
 import GameWorld.Character;
+import GameWorld.exception.InvalidItemException;
 
 public class DropItemEvent extends Event{
 
@@ -15,12 +16,10 @@ public class DropItemEvent extends Event{
 	
 	@Override
 	public void apply() {
-		if (character.getInventory().contains(item)){
+		try {
 			character.getInventory().drop(item);
-			System.out.println("Character " + character.getName() 
-				+ " has successfully droped the item");
-		} else {
-			System.out.println("Item is not in the inventory");
+		} catch (InvalidItemException e) {
+			e.printStackTrace();
 		}
 	}
 

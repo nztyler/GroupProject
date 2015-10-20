@@ -24,8 +24,7 @@ public class Room {
 		this.doors = doors;
 	}
 	
-	public Map<Direction, Door> getDoors()
-	{
+	public Map<Direction, Door> getDoors(){
 		return doors;
 	}
 	
@@ -37,8 +36,11 @@ public class Room {
 		return items;
 	}
 	
-	public void draw(Direction directionFrom)
-	{
+	public void addItem(Item item){
+		this.items.add(item);
+	}
+	
+	public void draw(Direction directionFrom){
 		// uses directionFrom to draw the room from the view given by entering from that direction
 		// draws the room and all items in the room
 	}

@@ -1,5 +1,6 @@
 package GameWorld;
 
+import GameWorld.exception.InvalidRoomInputException;
 import GameWorld.objects.Key;
 
 /**
@@ -39,15 +40,27 @@ public class Door {
 		this.key = key;
 		isLocked = true;
 	}
+	
+	public Room getRoom1(){
+		return room1;
+	}
+	
+	public Room getRoom2(){
+		return room2;
+	}
 
-	public Room getNextRoom(Room room){
+	public Room getNextRoom(Room room) throws InvalidRoomInputException{
 		if (room1 == room){
 			return room2;
 		} else if (room2 == room){
 			return room1;
 		} else {
-			return null; //Incorrect room input
+			throw new InvalidRoomInputException("Input room is not connected to this room");
 		}
+	}
+	
+	public boolean isKey(Key key){
+		return this.key == key;
 	}
 
 	/**
@@ -62,6 +75,7 @@ public class Door {
 			System.out.println("This door cannot be locked, and this key locks another door");
 		} else {
 			System.out.println("This is not the correct key for this door");
+			
 		}
 	}
 }

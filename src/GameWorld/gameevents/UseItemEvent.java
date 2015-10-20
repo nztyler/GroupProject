@@ -1,5 +1,6 @@
 package GameWorld.gameevents;
 
+import GameWorld.exception.GameException;
 import GameWorld.objects.ActivatableItem;
 
 public class UseItemEvent extends Event{
@@ -10,9 +11,14 @@ public class UseItemEvent extends Event{
 		this.item = item;
 	}
 	
+	//the only item that would have trouble activating is a key
+	//lock picks and lights will activate regardless
 	@Override
 	public void apply() {
-		// TODO Auto-generated method stub
-		item.activate();
+		try {
+			item.activate();
+		} catch (GameException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package GameWorld.gameevents;
 
 import GameWorld.Character;
+import GameWorld.exception.InvalidItemException;
 import GameWorld.objects.MovableItem;
 
 public class PickUpItemEvent extends Event{
@@ -15,6 +16,10 @@ public class PickUpItemEvent extends Event{
 	
 	@Override
 	public void apply() {
-		character.getInventory().put(item);
+		try {
+			character.getInventory().put(item);
+		} catch (InvalidItemException e) {
+			e.printStackTrace();
+		}
 	}
 }

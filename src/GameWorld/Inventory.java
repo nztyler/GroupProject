@@ -1,9 +1,13 @@
 package GameWorld;
 
 import java.awt.List;
+
 import java.util.ArrayList;
 
+import GameWorld.exception.InvalidItemException;
+import GameWorld.objects.Item;
 import GameWorld.objects.MovableItem;
+import GameWorld.Character;
 
 /**
  * 
@@ -16,9 +20,11 @@ public class Inventory {
 	/* Inventory is basically a container, so do I really need this class? */
 
 	private ArrayList<MovableItem> items;
+	private Character character;
 
-	public Inventory(){
+	public Inventory(Character character){
 		this.items = new ArrayList<MovableItem>();
+		this.character = character;
 	}
 
 	/**
@@ -41,21 +47,27 @@ public class Inventory {
 	/**
 	 * 
 	 * @param item to be added to the inventory
+	 * @throws InvalidItemException 
 	 */
-	public void put(MovableItem item){
-		items.add(item);
+	public void put(Item item) throws InvalidItemException{
+		if (item instanceof MovableItem){
+			items.add((MovableItem)item);
+		} else {
+			throw new InvalidItemException("This is not a movable item, and therfore cannot be picked up");
+		}
 	}
 
 	/**
 	 * 
 	 * @param item to be droped and returned to the floor
+	 * @throws InvalidItemException 
 	 */
-	public void drop(MovableItem item){
+	public void drop(MovableItem item) throws InvalidItemException{
 		if (items.contains(item)){
 			items.remove(item);
-			//return the item back to the floor
+			character.getRoom().addItem(item);
 		} else {
-			System.out.println("Inventory class - This item in not contained in your inventory");
+			throw new InvalidItemException("Item is not contained in inventory");
 		}
 	}
 
