@@ -24,7 +24,10 @@ public class Room {
 		this.items = items;
 		this.doors = doors;
 	}
-	
+	/**
+	 * 
+	 * @return a mapping of all of the doors connected to this room and directions
+	 */
 	public Map<Direction, Door> getDoors(){
 		return doors;
 	}
@@ -33,14 +36,32 @@ public class Room {
 		return name;
 	}
 	
+	/**
+	 * get the item that is at this position in the room
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return
+	 */
 	public Item getItem(int x, int y, int z){
 		return items[x][y][z];
 	}
 	
+	/**
+	 * get the 3D-array of items contained in this room
+	 * @return
+	 */
 	public Item[][][] getItems(){
 		return items;
 	}
 	
+	/**
+	 * add an item to this position in the room
+	 * @param item
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void addItem(Item item, int x, int y, int z){
 		items[x][y][z] = item;
 	}
@@ -50,10 +71,20 @@ public class Room {
 		// draws the room and all items in the room
 	}
 
+	/**
+	 * add a direction and door to the mapping of doors
+	 * @param direction
+	 * @param door
+	 */
 	public void addDoor(Direction direction, Door door) {
 		doors.put(direction, door);
 	}
 
+	/**
+	 * check to see if the input item is contained in this room
+	 * @param item
+	 * @return true if the item is contained
+	 */
 	public boolean contains(Item item){
 		for (int x = 0; x < items.length; x++){
 			for (int y = 0; y < items[x].length; y++){
@@ -67,6 +98,12 @@ public class Room {
 		return false;
 	}
 	
+	/**
+	 * remove this item from the room, throw an exception if the
+	 * item is not currently in this room
+	 * @param item
+	 * @throws InvalidItemException
+	 */
 	public void remove(Item item) throws InvalidItemException {
 		if (!contains(item)){
 			throw new InvalidItemException("This item is not contained in this room");

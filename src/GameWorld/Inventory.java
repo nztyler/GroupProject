@@ -57,6 +57,10 @@ public class Inventory {
 		}
 	}
 
+	/**
+	 * add an item straight to the inventories List
+	 * @param item to be added
+	 */
 	public void add(MovableItem item){
 		items.add(item);
 	}

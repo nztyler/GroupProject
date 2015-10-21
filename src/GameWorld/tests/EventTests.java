@@ -26,6 +26,10 @@ import GameWorld.objects.Table;
 
 public class EventTests {
 	
+	/**
+	 * Sets up a dummy game for testing purposes
+	 * @return the character that has been created
+	 */
 	public Character setUpGame(){	
 		//room contains these items
 		Item[][][] items = new Item[3][3][3];

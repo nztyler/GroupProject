@@ -7,6 +7,10 @@ public class UseItemEvent extends Event{
 
 	private ActivatableItem item;
 	
+	/**
+	 * this event will be used to activate an item
+	 * @param item
+	 */
 	public UseItemEvent(ActivatableItem item){
 		this.item = item;
 	}
