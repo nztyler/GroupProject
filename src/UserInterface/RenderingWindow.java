@@ -12,6 +12,7 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -57,59 +58,37 @@ public class RenderingWindow extends JPanel{
 		Graphics g = roomImage.getGraphics();
 		BufferedImage tempBufImage;
 		Image tempImage;
-		for(int k = 0; k < 3; k++)
+		int offset = 0;
+		for(List<List<Item>> y : game.getCurrentRoom().getItems())
 		{
-			for(int i = 0; i < 3; i++)
+			for(int k = 0; k < y.get(0).size(); k++)
 			{
-				tempBufImage = ImageIO.read(new File(game.getCurrentRoom().getItems().get(0).get(0).get(i).getImage()));
-				Color color = new Color(tempBufImage.getRGB(0, 0));
-				ImageFilter filter = new RGBImageFilter() {
-					
-					// the color we are looking for... Alpha bits are set to opaque
-					public int markerRGB = color.getRGB() | 0xFF000000;
-					
-					public final int filterRGB(int x, int y, int rgb) {
-						if ((rgb | 0xFF000000) == markerRGB) {
-							// Mark the alpha bits as zero - transparent
-							return 0x00FFFFFF & rgb;
-						} else {
-							// nothing to do
-							return rgb;
+				for(int i = 0; i < y.get(k).size(); i++)
+				{
+					tempBufImage = ImageIO.read(new File(game.getCurrentRoom().getItems().get(0).get(k).get(i).getImage()));
+					Color color = new Color(tempBufImage.getRGB(0, 0));
+					ImageFilter filter = new RGBImageFilter() {
+						
+						// the color we are looking for... Alpha bits are set to opaque
+						public int markerRGB = color.getRGB() | 0xFF000000;
+						
+						public final int filterRGB(int x, int y, int rgb) {
+							if ((rgb | 0xFF000000) == markerRGB) {
+								// Mark the alpha bits as zero - transparent
+								return 0x00FFFFFF & rgb;
+							} else {
+								// nothing to do
+								return rgb;
+							}
 						}
-					}
-				};
-				
-				ImageProducer ip = new FilteredImageSource(tempBufImage.getSource(), filter);
-				tempImage = Toolkit.getDefaultToolkit().createImage(ip);
-				g.drawImage(tempImage, 165 + (k*214), (i*135), this);
-			}
-		}
-		for(int k = 0; k < 3; k++)
-		{
-			for(int i = 0; i < 3; i++)
-			{
-				tempBufImage = ImageIO.read(new File(game.getCurrentRoom().getItems().get(0).get(0).get(i).getImage()));
-				Color color = new Color(tempBufImage.getRGB(0, 0));
-				ImageFilter filter = new RGBImageFilter() {
+					};
 					
-					// the color we are looking for... Alpha bits are set to opaque
-					public int markerRGB = color.getRGB() | 0xFF000000;
-					
-					public final int filterRGB(int x, int y, int rgb) {
-						if ((rgb | 0xFF000000) == markerRGB) {
-							// Mark the alpha bits as zero - transparent
-							return 0x00FFFFFF & rgb;
-						} else {
-							// nothing to do
-							return rgb;
-						}
-					}
-				};
-				
-				ImageProducer ip = new FilteredImageSource(tempBufImage.getSource(), filter);
-				tempImage = Toolkit.getDefaultToolkit().createImage(ip);
-				g.drawImage(tempImage, 146 + (k*230), 30 + (i*165), this);
+					ImageProducer ip = new FilteredImageSource(tempBufImage.getSource(), filter);
+					tempImage = Toolkit.getDefaultToolkit().createImage(ip);
+					g.drawImage(tempImage, 165 + (k*214), offset + (i*135), this);
+				}
 			}
+			offset = offset + 110;
 		}
 		return roomImage;
 	}
