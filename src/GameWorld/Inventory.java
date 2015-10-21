@@ -68,11 +68,12 @@ public class Inventory {
 	 */
 	public void drop(MovableItem item) throws InvalidItemException{
 		if (items.contains(item)){
+			//remove from inventory
 			items.remove(item);
-			character.getRoom().addItem(item);
 		} else {
 			throw new InvalidItemException("Item is not contained in inventory");
 		}
 	}
+
 
 }
