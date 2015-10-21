@@ -57,15 +57,15 @@ public class RenderingWindow extends JPanel{
 		BufferedImage roomImage = ImageIO.read(new File(game.getCurrentRoom().IMAGE));
 		Graphics g = roomImage.getGraphics();
 		BufferedImage tempBufImage;
+		List<List<List<Item>>> items = game.getCurrentRoom().getItems();
 		Image tempImage;
-		int offset = 0;
-		for(List<List<Item>> y : game.getCurrentRoom().getItems())
+		for(int j = 0; j < items.size(); j++)
 		{
-			for(int k = 0; k < y.get(0).size(); k++)
+			for(int k = 0; k < items.get(0).size(); k++)
 			{
-				for(int i = 0; i < y.get(k).size(); i++)
+				for(int i = 0; i < items.get(k).size(); i++)
 				{
-					tempBufImage = ImageIO.read(new File(game.getCurrentRoom().getItems().get(0).get(k).get(i).getImage()));
+					tempBufImage = ImageIO.read(new File(items.get(j).get(k).get(i).getImage()));
 					Color color = new Color(tempBufImage.getRGB(0, 0));
 					ImageFilter filter = new RGBImageFilter() {
 						
@@ -85,10 +85,9 @@ public class RenderingWindow extends JPanel{
 					
 					ImageProducer ip = new FilteredImageSource(tempBufImage.getSource(), filter);
 					tempImage = Toolkit.getDefaultToolkit().createImage(ip);
-					g.drawImage(tempImage, 165 + (k*214), offset + (i*135), this);
+					g.drawImage(tempImage, 165 + (k*214), 270 + (i*110) - (j*40), this);
 				}
 			}
-			offset = offset + 110;
 		}
 		return roomImage;
 	}

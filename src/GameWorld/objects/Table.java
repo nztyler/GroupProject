@@ -8,7 +8,7 @@ package GameWorld.objects;
  */
 public class Table extends Item{
 
-	private static final String IMAGE = "";
+	private static final String IMAGE = "Images/Table.png";
 
 	public Table() {
 		super(IMAGE);

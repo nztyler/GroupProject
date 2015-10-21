@@ -12,6 +12,7 @@ import GameWorld.Inventory;
 import GameWorld.Room;
 import GameWorld.objects.Item;
 import GameWorld.objects.Key;
+import GameWorld.objects.Table;
 
 public class GameState {
 	private Room currentRoom;
@@ -32,7 +33,7 @@ public class GameState {
 				items.get(i).add(new ArrayList<Item>());
 				for(int j = 0; j < 3; j++)
 				{
-					items.get(i).get(k).add(new Key(null));
+					items.get(i).get(k).add(new Table());
 				}
 			}
 		}		
