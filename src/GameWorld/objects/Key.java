@@ -11,7 +11,7 @@ import GameWorld.exception.InvalidItemException;
  */
 public class Key extends ActivatableItem{
 
-	private static final String IMAGE= "";
+	private static final String IMAGE= "Images/Key.png";
 
 	private Door door;
 	
@@ -27,6 +27,11 @@ public class Key extends ActivatableItem{
 		} else {
 			throw new InvalidItemException("This key does not open this door");
 		}
+	}
+	
+	public String getImage()
+	{
+		return IMAGE;
 	}
 
 }
