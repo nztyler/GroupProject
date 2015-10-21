@@ -31,16 +31,15 @@ public class Character {
 	 * @throws InvalidRoomInputException 
 	 */
 	public void moveRoom(Room newRoom) throws InvalidRoomInputException{
-		Door[] doors = (Door[]) currentRoom.getDoors().values().toArray();
 		boolean isMovable = false;
-		outer : for (int i = 0; i < doors.length; i++){
-			Door d = doors[i];
+		outer : for (Door d : currentRoom.getDoors().values()){
 			if (d.getRoom1() == newRoom || d.getRoom2() == newRoom){
 				//the new room can be reached from the current room
 				isMovable = true;
 				break outer;
 			}
 		}
+		
 		if (isMovable){
 			this.currentRoom = newRoom;
 		} else {
@@ -62,6 +61,10 @@ public class Character {
 	 */
 	public Inventory getInventory(){
 		return inventory;
+	}
+	
+	public void setInventory(Inventory inventory){
+		this.inventory = inventory;
 	}
 	/**
 	 * 

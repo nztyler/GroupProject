@@ -14,11 +14,7 @@ public class UseItemEvent extends Event{
 	//the only item that would have trouble activating is a key
 	//lock picks and lights will activate regardless
 	@Override
-	public void apply() {
-		try {
-			item.activate();
-		} catch (GameException e) {
-			e.printStackTrace();
-		}
+	public void apply() throws GameException{
+		item.activate();
 	}
 }

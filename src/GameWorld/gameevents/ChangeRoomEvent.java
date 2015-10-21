@@ -1,6 +1,7 @@
 package GameWorld.gameevents;
 
 import GameWorld.Room;
+import GameWorld.exception.GameException;
 import GameWorld.exception.InvalidRoomInputException;
 import GameWorld.Character;
 
@@ -15,12 +16,8 @@ public class ChangeRoomEvent extends Event{
 	}
 	
 	@Override
-	public void apply() {
-		try {
+	public void apply() throws GameException{
 			character.moveRoom(room);
-		} catch (InvalidRoomInputException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

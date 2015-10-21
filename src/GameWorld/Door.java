@@ -49,13 +49,14 @@ public class Door {
 		return room2;
 	}
 
-	public Room getNextRoom(Room room) throws InvalidRoomInputException{
+	public Room getNextRoom(Room room){ //throws InvalidRoomInputException{
 		if (room1 == room){
 			return room2;
 		} else if (room2 == room){
 			return room1;
 		} else {
-			throw new InvalidRoomInputException("Input room is not connected to this room");
+			return null;
+			//throw new InvalidRoomInputException("Input room is not connected to this room");
 		}
 	}
 	

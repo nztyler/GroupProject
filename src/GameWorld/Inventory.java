@@ -51,12 +51,16 @@ public class Inventory {
 	 */
 	public void put(Item item) throws InvalidItemException{
 		if (item instanceof MovableItem){
-			items.add((MovableItem)item);
+			add((MovableItem) item);
 		} else {
 			throw new InvalidItemException("This is not a movable item, and therfore cannot be picked up");
 		}
 	}
 
+	public void add(MovableItem item){
+		items.add(item);
+	}
+	
 	/**
 	 * 
 	 * @param item to be droped and returned to the floor
