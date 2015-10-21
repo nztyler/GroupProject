@@ -14,8 +14,6 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -66,17 +64,17 @@ public class RenderingWindow extends JPanel{
 		BufferedImage roomImage = ImageIO.read(new File(game.getCurrentRoom().IMAGE));
 		Graphics g = roomImage.getGraphics();
 		BufferedImage tempBufImage;
-		List<List<List<Item>>> items = game.getCurrentRoom().getItems();
+		Item[][][] items = game.getCurrentRoom().getItems();
 		Image tempImage;
-		for(int j = 0; j < items.size(); j++)
+		for(int j = 0; j < items.length; j++)
 		{
-			for(int k = 0; k < items.get(0).size(); k++)
+			for(int k = 0; k < items[0].length; k++)
 			{
-				for(int i = 0; i < items.get(k).size(); i++)
+				for(int i = 0; i < items[k].length; i++)
 				{
-					if(items.get(j).get(k).get(i) != null)
+					if(items[j][k][i] != null)
 					{						
-						tempBufImage = ImageIO.read(new File(items.get(j).get(k).get(i).getImage()));
+						tempBufImage = ImageIO.read(new File(items[j][k][i].getImage()));
 						Color color = new Color(tempBufImage.getRGB(0, 0));
 						ImageFilter filter = new RGBImageFilter() {
 							
