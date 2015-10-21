@@ -36,7 +36,9 @@ public class GameState {
 					items.get(i).get(k).add(new Table());
 				}
 			}
-		}		
+		}
+		items.get(1).get(1).set(2, new Key(null));
+		items.get(2).get(1).set(2, null);
 		return new Room("Entrance", items, new HashMap<Direction, Door>());
 	}
 
