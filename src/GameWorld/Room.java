@@ -15,10 +15,10 @@ public class Room {
 
 	public final String IMAGE = "Images/Room_Basic.png";
 	private String name;	//The name of the room
-	private List<Item> items;	//These are the items contained in the room
+	private List<List<List<Item>>> items; //These are the items contained in the room, null means there is no item at that location
 	private Map<Direction, Door> doors; // Map of direction to door connected to this room
 	
-	public Room(String name, List<Item> items, Map<Direction, Door> doors){
+	public Room(String name, List<List<List<Item>>> items, Map<Direction, Door> doors){
 		this.name = name;
 		this.items = items;
 		this.doors = doors;
@@ -32,7 +32,7 @@ public class Room {
 		return name;
 	}
 	
-	public List<Item> getItems(){
+	public List<List<List<Item>>> getItems(){
 		return items;
 	}
 	
