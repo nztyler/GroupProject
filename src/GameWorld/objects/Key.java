@@ -34,4 +34,8 @@ public class Key extends ActivatableItem{
 		return IMAGE;
 	}
 
+	public void setDoor(Door lockedDoor) {
+		this.door = lockedDoor;
+		
+	}
 }

@@ -18,7 +18,7 @@ public class PickUpItemEvent extends Event{
 	
 	@Override
 	public void apply() throws GameException{
+		character.getRoom().remove(item);
 		character.getInventory().put(item);
-		character.getRoom().getItems().remove(item);
 	}
 }

@@ -24,9 +24,10 @@ public class GameState {
 	}
 	
 	private Room createRooms() {
-		List<List<List<Item>>> items = new ArrayList<List<List<Item>>>();
+		Item[][][] items = new Item[3][3][3];
 		for(int i = 0; i < 3; i++)
 		{
+<<<<<<< HEAD
 			items.add(new ArrayList<List<Item>>());
 			for(int k = 0; k < 3; k++)
 			{
@@ -34,6 +35,11 @@ public class GameState {
 				for(int j = 0; j < 3; j++)
 				{
 					items.get(i).get(k).add(new Table());
+=======
+			for(int k = 0; k < 3; k++){
+				for(int j = 0; j < 3; j++){
+					items[i][k][j] = new Key(null);
+>>>>>>> origin/master
 				}
 			}
 		}
