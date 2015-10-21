@@ -36,8 +36,8 @@ public class Room {
 		return items;
 	}
 	
-	public void addItem(Item item){
-		this.items.add(item);
+	public void addItem(Item item, int x, int y, int z){
+		items.get(z).get(y).set(x, item);
 	}
 	
 	public void draw(Direction directionFrom){
