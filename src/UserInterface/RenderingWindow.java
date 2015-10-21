@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -17,6 +19,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import GameWorld.gameevents.EventHelper;
 import GameWorld.objects.Item;
 import Main.GameState;
 
@@ -36,9 +39,15 @@ public class RenderingWindow extends JPanel{
 	    setMinimumSize(size);
 	    setMaximumSize(size);
 	    setSize(size);
+	    addMouseListener(new MouseAdapter() {
+	    	public void mousePressed(MouseEvent event)
+	    	{
+	    		EventHelper.newEvent(event, game);
+	    	}
+	    });
 		this.game = game;
 	}
-	
+
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
