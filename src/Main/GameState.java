@@ -2,6 +2,7 @@ package Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import UserInterface.ApplicationWindow;
 import UserInterface.RenderingWindow;
@@ -10,6 +11,7 @@ import GameWorld.Door;
 import GameWorld.Inventory;
 import GameWorld.Room;
 import GameWorld.objects.Item;
+import GameWorld.objects.Key;
 
 public class GameState {
 	private Room currentRoom;
@@ -21,7 +23,20 @@ public class GameState {
 	}
 	
 	private Room createRooms() {
-		return new Room("Entrance", new ArrayList<Item>(), new HashMap<Direction, Door>());
+		List<List<List<Item>>> items = new ArrayList<List<List<Item>>>();
+		for(int i = 0; i < 3; i++)
+		{
+			items.add(new ArrayList<List<Item>>());
+			for(int k = 0; k < 3; k++)
+			{
+				items.get(i).add(new ArrayList<Item>());
+				for(int j = 0; j < 3; j++)
+				{
+					items.get(i).get(k).add(new Key(null));
+				}
+			}
+		}		
+		return new Room("Entrance", items, new HashMap<Direction, Door>());
 	}
 
 	public Room getCurrentRoom() {
