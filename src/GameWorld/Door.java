@@ -49,6 +49,13 @@ public class Door {
 		return room2;
 	}
 
+	/**
+	 * 
+	 * @param room is room that the character is in, and it will return
+	 * the room on the other side of the door
+	 * @return the room on the other side of the door. Null if 
+	 *     an invalid room has been entered
+	 */
 	public Room getNextRoom(Room room){ //throws InvalidRoomInputException{
 		if (room1 == room){
 			return room2;
@@ -60,6 +67,11 @@ public class Door {
 		}
 	}
 	
+	/**
+	 * check if this key is the correct key for this door
+	 * @param key
+	 * @return
+	 */
 	public boolean isKey(Key key){
 		return this.key == key;
 	}

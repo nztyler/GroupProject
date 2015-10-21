@@ -15,7 +15,6 @@ import GameWorld.objects.Key;
 
 public class GameState {
 	private Room currentRoom;
-	private Inventory invetory;
 	
 	public GameState()
 	{

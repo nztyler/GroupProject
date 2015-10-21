@@ -20,6 +20,7 @@ public class Key extends ActivatableItem{
 		this.door = door;
 	}
 
+	//this looks like trouble. Needs to be fixed
 	@Override
 	public void activate() throws InvalidItemException {
 		if (door.isKey(this)){
