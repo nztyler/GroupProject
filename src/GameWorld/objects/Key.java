@@ -12,6 +12,7 @@ import GameWorld.exception.InvalidItemException;
 public class Key extends ActivatableItem{
 
 	private static final String IMAGE= "Images/Key.png";
+	private static final String INV_IMAGE= "Images/Inv_Key.png";
 
 	private Door door;
 	
@@ -35,6 +36,11 @@ public class Key extends ActivatableItem{
 		return IMAGE;
 	}
 
+	public String getInvImage()
+	{
+		return INV_IMAGE;
+	}
+	
 	public void setDoor(Door lockedDoor) {
 		this.door = lockedDoor;
 		

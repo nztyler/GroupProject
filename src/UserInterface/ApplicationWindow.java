@@ -5,6 +5,12 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import GameWorld.gameevents.EventHelper;
+import Main.GameState;
+import UserInterface.ActToPerform;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -26,32 +32,42 @@ public class ApplicationWindow {
 		frame = new JFrame();
 		frame.setTitle("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new GridBagLayout());
-		setMenu();
+		frame.setLayout(new FlowLayout());
 		frame.add(window);
-		setControlButtons();
-		frame.setSize(1000,1000);
+		frame.add(setButtons());
 		frame.setVisible(true);
 		frame.pack();
 	}
 	
-	public void setMenu()
-	{
-		JMenuBar bar = new JMenuBar();
-		JMenu menu = new JMenu("Game");
-		JMenuItem item = new JMenuItem("Join Game");
-		item.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent action)
-			{
-				joinGame();
-			}
-		});
-		menu.add(item);
-		bar.add(menu);
-		frame.setJMenuBar(bar);
+	/**
+	 * Creates and adds all buttons to the frame
+	 * @return JPanel holding the inventory and control buttons
+	 */
+	public JPanel setButtons() {
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+		buttonPanel.add(setInventoryButtons());
+		buttonPanel.add(setControlButtons());
+		return buttonPanel;
 	}
 	
-	public void setControlButtons()
+	public JPanel setInventoryButtons() {
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout());
+		JButton button = new JButton(new ImageIcon("Images/Inv_Empty.png"));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent action)
+			{
+				GameState game = ((RenderingWindow)frame.getComponentAt(10, 10)).getGame();
+				game.setSelected(ActToPerform.DROP);
+			}
+		});
+		buttonPanel.add(button);
+		return buttonPanel;
+	}
+
+
+	public JPanel setControlButtons()
 	{
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
@@ -95,7 +111,7 @@ public class ApplicationWindow {
 			}
 		});
 		buttonPanel.add(button);
-		frame.add(buttonPanel);
+		return buttonPanel;
 	}
 	
 	public void joinGame()
