@@ -40,7 +40,7 @@ public class RenderingWindow extends JPanel{
 	    addMouseListener(new MouseAdapter() {
 	    	public void mousePressed(MouseEvent event)
 	    	{
-	    		EventHelper.newEvent(event, game);
+	    		EventHelper.newEvent(event, game); // calls the newEvent method to work out what to do
 	    	}
 	    });
 		this.game = game;
@@ -59,6 +59,12 @@ public class RenderingWindow extends JPanel{
 		}
     }
 	
+	/**
+	 * Creates an image of the current room using the rooms image and the images of the items in the room.
+	 * @return an image of the current room
+	 * @throws IOException
+	 */
+	
 	public Image createRoomImage() throws IOException
 	{
 		BufferedImage roomImage = ImageIO.read(new File(game.getCurrentRoom().IMAGE));
@@ -66,19 +72,19 @@ public class RenderingWindow extends JPanel{
 		BufferedImage tempBufImage;
 		Item[][][] items = game.getCurrentRoom().getItems();
 		Image tempImage;
-		for(int j = 0; j < items.length; j++)
+		for(int z = 0; z < items.length; z++)
 		{
-			for(int k = 0; k < items[0].length; k++)
+			for(int y = 0; y < items[0].length; y++)
 			{
-				for(int i = 0; i < items[k].length; i++)
+				for(int x = 0; x < items[y].length; x++)
 				{
-					if(items[j][k][i] != null)
+					if(items[z][y][x] != null)
 					{						
-						tempBufImage = ImageIO.read(new File(items[j][k][i].getImage()));
+						tempBufImage = ImageIO.read(new File(items[z][y][x].getImage()));
 						Color color = new Color(tempBufImage.getRGB(0, 0));
-						ImageFilter filter = new RGBImageFilter() {
+						ImageFilter filter = new RGBImageFilter() { // Makes background transparent
 							
-							// the color we are looking for... Alpha bits are set to opaque
+							// Alpha bits are set to opaque
 							public int markerRGB = color.getRGB() | 0xFF000000;
 							
 							public final int filterRGB(int x, int y, int rgb) {
@@ -94,11 +100,22 @@ public class RenderingWindow extends JPanel{
 						
 						ImageProducer ip = new FilteredImageSource(tempBufImage.getSource(), filter);
 						tempImage = Toolkit.getDefaultToolkit().createImage(ip);
-						g.drawImage(tempImage, 165 + (k*214), 270 + (i*110) - (j*40), this);
+						g.drawImage(tempImage, 165 + (y*214), 270 + (x*110) - (z*40), this); // draws the item in the room in the right position
 					}
 				}
 			}
 		}
 		return roomImage;
+	}
+	
+	public GameState getGame()
+	{
+		return game;
+	}
+	
+	public void setGame(GameState game)
+	{
+		this.game = game;
+		this.repaint();
 	}
 }
