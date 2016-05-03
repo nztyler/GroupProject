@@ -10,6 +10,7 @@ public class BrokenDoor extends Door{
 	public BrokenDoor(Room room1, Room room2){
 		super(room1, room2);
 		isLocked = true;
+		//hello changes
 	}
 	
 	/**
